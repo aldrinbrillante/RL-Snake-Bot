@@ -34,6 +34,15 @@ class QTrainer:
         #     print(i.is_cpu)
 
     # TODO: Explain how this method works.
+    """
+    This method works by us starting off getting the variables of the game.
+    The train_step then starts by getting the current state. Then it gets the next state, action,
+    then reward. After this, we get the Q value. From there we clone it to create target to be used
+    to calculate loss. We then go through the done states and update the target. We then obtain 
+    a new Q value stored in target. as it looks at the value of the next state. Finally, it backpropogates
+    and weight is updated. 
+    """
+
     def train_step(self, state, action, reward, next_state, done):
         state = torch.tensor(state, dtype=torch.float).cpu()
         next_state = torch.tensor(next_state, dtype=torch.float).cpu()
